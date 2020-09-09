@@ -42,7 +42,6 @@ namespace Homework_2
                     Number = Console.ReadLine();
                 }
             }
-            NumberMonth = Convert.ToInt32(Number);
 
             while (NumberMonth <= 0 || NumberMonth > (int)MyMonth.December)
             {
