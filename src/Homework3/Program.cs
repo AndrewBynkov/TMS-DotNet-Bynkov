@@ -6,32 +6,32 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Homework3
 {
-    enum ListMyMonth
+    enum ListMyDays
     {
-        January = 1,
-        February,
-        March,
-        April,
-        May,
-        June,
-        July,
-        August,
-        September,
-        October,
-        November,
-        December
+        Monday = 1,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+
     }
     class Program
     {
         static void Main(string[] args)
         {
-            var userValMonth = UserDate();
+            string userDay;
             var myYear = 0;
-            GetDate(ref myYear);
-            GetWensday(userValMonth, ref myYear);
+            var myAllDaysinMonth = 31;
+
+            var userValMonth = UserDate(out userDay);
+            UserDay(ref userDay);
+            GetDate(ref myYear, ref userValMonth, ref myAllDaysinMonth);
+            GetDateDay(userValMonth, myYear, userDay, myAllDaysinMonth);
         }
 
-        private static void GetWensday(int userValMonth, ref int myYear)
+        private static void GetDateDay(int userValMonth, int myYear, string userDay, int myAllDaysInMonth)
         {
             DateTime date = new DateTime(myYear, userValMonth, 1);
             while (true)
@@ -48,10 +48,14 @@ namespace Homework3
             }
         }
 
-        private static int UserDate()
+        private static int UserDate(out string userDay)
         {
             Console.Write("Enter date of month int only: ");
             var userVal = Console.ReadLine();
+
+            Console.Write("Enter name day (Mondey only): ");
+            userDay = Console.ReadLine();
+
             while (int.TryParse(userVal, out int outIntResult).Equals(false))
             {
                 Console.Write("Enter date of week int only: ");
@@ -61,10 +65,27 @@ namespace Homework3
             return userValResult;
         }
 
-        private static void GetDate(ref int myYear)
+        private static string UserDay(ref string userDayComprasion)
         {
-            int myYears = DateTime.Now.Date.Year;
-            myYear = myYears;
+            for (int i = 0; i < (int)(ListMyDays)i; i++)
+            {
+                if (((ListMyDays)i).Equals(userDayComprasion))
+                {
+                    userDayComprasion = Convert.ToString((ListMyDays)i);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return userDayComprasion;
+        }
+
+        private static void GetDate(ref int myYear, ref int userValMonth, ref int myAllDaysinMonth)
+        {
+            myYear = DateTime.Now.Date.Year;
+            myAllDaysinMonth = DateTime.DaysInMonth(myYear, userValMonth);
         }
 
     }
