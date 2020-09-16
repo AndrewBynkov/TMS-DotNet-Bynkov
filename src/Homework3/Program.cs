@@ -1,93 +1,120 @@
 ﻿using System;
-using System.Globalization;
-using System.Data;
-using System.Reflection.Metadata;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Homework3
 {
-    enum ListMyDays
-    {
-        Monday = 1,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
-
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            string userDay;
-            var myYear = 0;
-            var myAllDaysinMonth = 31;
-
-            var userValMonth = UserDate(out userDay);
-            UserDay(ref userDay);
-            GetDate(ref myYear, ref userValMonth, ref myAllDaysinMonth);
-            GetDateDay(userValMonth, myYear, userDay, myAllDaysinMonth);
+            (int month, DayOfWeek dayOfWeek) = UserInputData();
+            GetDatesByDayOfWeek(month, DateTime.Now.Year, dayOfWeek);
         }
 
-        private static void GetDateDay(int userValMonth, int myYear, string userDay, int myAllDaysInMonth)
+        private static (int month, DayOfWeek dayOfWeek) UserInputData()
         {
-            DateTime date = new DateTime(myYear, userValMonth, 1);
-            while (true)
+            DayOfWeek dayOfWeek = GetDayOfWeekByUserInput();
+            int month = GetMonthByUserInput();
+
+            return (month, dayOfWeek);
+        }
+
+        private static DayOfWeek GetDayOfWeekByUserInput()
+        {
+            bool canParse = false;
+            DayOfWeek dayOfWeek = DayOfWeek.Monday;
+
+            do
             {
-                if (date.DayOfWeek == DayOfWeek.Monday)
+                Console.Write("Enter name day (Monday only): ");
+                string userInputWeekDay = Console.ReadLine().ToLowerInvariant();
+                switch (userInputWeekDay)
                 {
-                    Console.WriteLine($"Monday - {date.Date}");
+                    case "monday":
+                        {
+                            dayOfWeek = DayOfWeek.Monday;
+                            canParse = true;
+                        }
+                        break;
+                    case "tuesday":
+                        {
+                            dayOfWeek = DayOfWeek.Tuesday;
+                            canParse = true;
+                        }
+                        break;
+                    case "wednesday":
+                        {
+                            dayOfWeek = DayOfWeek.Wednesday;
+                            canParse = true;
+                        }
+                        break;
+                    case "thursday":
+                        {
+                            dayOfWeek = DayOfWeek.Thursday;
+                            canParse = true;
+                        }
+                        break;
+                    case "friday":
+                        {
+                            dayOfWeek = DayOfWeek.Friday;
+                            canParse = true;
+                        }
+                        break;
+                    case "saturday":
+                        {
+                            dayOfWeek = DayOfWeek.Saturday;
+                            canParse = true;
+                        }
+                        break;
+                    case "sunday":
+                        {
+                            dayOfWeek = DayOfWeek.Sunday;
+                            canParse = true;
+                        }
+                        break;
+                    default:
+                        break;
                 }
-                date = date.AddDays(1.0);
-                if (date.Month != userValMonth)
+
+            } while (canParse == false);
+
+            return dayOfWeek;
+        }
+
+        private static int GetMonthByUserInput()
+        {
+            bool canParse = false;
+            int monthNumber = 0;
+            do
+            {
+                Console.Write("Enter date of month int only: ");
+                string userInputMonthNumber = Console.ReadLine();
+                canParse = int.TryParse(userInputMonthNumber, out int parsedMonthNumber);
+                monthNumber = parsedMonthNumber;
+            }
+            while (!canParse || monthNumber < 1 || monthNumber > 12);
+
+            return monthNumber;
+        }
+
+        private static void GetDatesByDayOfWeek(int month, int year, DayOfWeek dayOfWeek)
+        {
+            int days = DateTime.DaysInMonth(year, month);
+
+            DateTime[] dates = new DateTime[days];
+
+            for (int i = 0; i < days; i++)
+            {
+                dates[i] = new DateTime(year, month, i + 1);
+            }
+
+            foreach (DateTime date in dates)
+            {
+                if (date.DayOfWeek == dayOfWeek)
                 {
-                    break;
+                    Console.WriteLine(date);
                 }
             }
         }
-
-        private static int UserDate(out string userDay)
-        {
-            Console.Write("Enter date of month int only: ");
-            var userVal = Console.ReadLine();
-
-            Console.Write("Enter name day (Mondey only): ");
-            userDay = Console.ReadLine();
-
-            while (int.TryParse(userVal, out int outIntResult).Equals(false))
-            {
-                Console.Write("Enter date of week int only: ");
-                userVal = Console.ReadLine();
-            }
-            var userValResult = Convert.ToInt32(userVal);
-            return userValResult;
-        }
-
-        private static string UserDay(ref string userDayComprasion)
-        {
-            for (int i = 0; i < (int)(ListMyDays)i; i++)
-            {
-                if (((ListMyDays)i).Equals(userDayComprasion))
-                {
-                    userDayComprasion = Convert.ToString((ListMyDays)i);
-                    break;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-            return userDayComprasion;
-        }
-
-        private static void GetDate(ref int myYear, ref int userValMonth, ref int myAllDaysinMonth)
-        {
-            myYear = DateTime.Now.Date.Year;
-            myAllDaysinMonth = DateTime.DaysInMonth(myYear, userValMonth);
-        }
-
     }
 }
 
