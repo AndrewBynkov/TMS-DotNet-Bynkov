@@ -84,6 +84,7 @@ namespace Homework3
         {
             bool canParse = false;
             int monthNumber = 0;
+
             do
             {
                 Console.Write("Enter date of month int only: ");
