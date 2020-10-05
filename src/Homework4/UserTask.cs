@@ -1,35 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
 
 namespace Homework4
 {
-    class UserTask
+    public class UserTask
     {
-        public void inpUserTask(DateTime dateImpDay)
+        TaskStatus taskStatus = new TaskStatus();
+
+        /// <summary>
+        /// arrayOfTask
+        /// </summary>
+        private string[] _arrTask = new string[100];
+
+        public (int lenghtArrList, string[] _arrTask) GetUserTask(DateTime userDateTime)
         {
-            string[] taskArray = new string[100];
-            string Next = "yes";
-            string Task = default;
-            int count = 0;
+            int count = default;
 
-            while (Next == "yes" || Next == default)
+            while (KeyOfContinue())
             {
-                Console.Write($"\n{dateImpDay} - {dateImpDay.DayOfWeek}\t");
-                Console.Write("Enter you task: ");
-                Task = Console.ReadLine().ToLower();
-
-                taskArray[count] = Task;
+                Console.Write("\n\nEnter you task: ");
+                _arrTask[count] = (userDateTime + " - " + Console.ReadLine() + "\n" + "status: " + taskStatus.GetTaskStatus());
                 count++;
-
-                Console.Write("Continue? yes/no: ");
-                Next = Console.ReadLine().ToLower().Replace(" ", "");
             }
-            Console.WriteLine();
+            return (count, _arrTask);
+        }
 
-            for (int i = 0; i < count; i++)
+        public bool KeyOfContinue()
+        {
+            Console.Write("You want to continue? Y/y: ");
+            var key = Console.ReadKey().Key;
+            return key == ConsoleKey.Y;
+        }
+
+        public void GetTaskInfo(int lenghtArrayOfTask, string [] arrayOfTask)
+        {
+            Console.WriteLine();
+            for (int i = 0; i < lenghtArrayOfTask; i++)
             {
-                Console.WriteLine($"Task #{i + 1} of the day {dateImpDay} - {dateImpDay.DayOfWeek}: {taskArray[i]}");
+                Console.WriteLine($"Task #{i+1} - {arrayOfTask[i]}");
             }
         }
     }
 }
-
