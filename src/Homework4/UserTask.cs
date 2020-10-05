@@ -23,6 +23,7 @@ namespace Homework4
                 Console.Write("\n\nEnter you task: ");
                 _arrTask[count] = (userDateTime + " - " + Console.ReadLine() + "\n" + "status: " + taskStatus.GetTaskStatus());
                 count++;
+                userDateTime = DateTime.Now;
             }
             return (count, _arrTask);
         }
