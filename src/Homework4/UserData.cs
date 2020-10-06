@@ -6,6 +6,9 @@ namespace Homework4
 {
     public class UserData
     {
+        /// <summary>
+        /// GetDateTime
+        /// </summary>
         public DateTime GetDateTime { get; set; }
 
         /// <summary>
