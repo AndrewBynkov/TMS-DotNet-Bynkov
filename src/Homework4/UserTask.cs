@@ -7,21 +7,19 @@ namespace Homework4
 {
     public class UserTask
     {
-        TaskStatus taskStatus = new TaskStatus();
-
         /// <summary>
         /// arrayOfTask
         /// </summary>
         private string[] _arrTask = new string[100];
 
-        public (int lenghtArrList, string[] _arrTask) GetUserTask(DateTime userDateTime)
+        public (int lenghtArrList, string[] _arrTask) GetUserTask(DateTime userDateTime, TaskStatus taskSt)
         {
             int count = default;
 
             while (KeyOfContinue())
             {
                 Console.Write("\n\nEnter you task: ");
-                _arrTask[count] = (userDateTime + " - " + Console.ReadLine() + "\n" + "status: " + taskStatus.GetTaskStatus());
+                _arrTask[count] = (userDateTime + " - " + Console.ReadLine() + "\n" + "status: " + taskSt.GetTaskStatus());
                 count++;
                 userDateTime = DateTime.Now;
             }
