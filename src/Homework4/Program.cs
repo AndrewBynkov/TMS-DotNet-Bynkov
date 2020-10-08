@@ -18,7 +18,7 @@ namespace Homework4
             (var lenghtArrayOfTask, string [] listOfTask) = userTask.GetUserTask(userData.GetDateTime, taskStatus);
 
             Console.WriteLine($"\n\nHi {userData.UserName}! You have {userData.UserAge} years old. Here is your to-do list for the day: ");
-            userTask.GetTaskInfo(lenghtArrayOfTask, listOfTask);
+            userTask.GetTaskInfo(lenghtArrayOfTask, listOfTask, userData);
         }
     }
 }

@@ -33,12 +33,14 @@ namespace Homework4
             return key == ConsoleKey.Y;
         }
 
-        public void GetTaskInfo(int lenghtArrayOfTask, string [] arrayOfTask)
+        public void GetTaskInfo(int lenghtArrayOfTask, string [] arrayOfTask, UserData Data)
         {
             Console.WriteLine();
             for (int i = 0; i < lenghtArrayOfTask; i++)
             {
-                Console.WriteLine($"Task #{i+1} - {arrayOfTask[i]}");
+                Console.WriteLine($"Name - {Data.UserName}");
+                Console.WriteLine($"Age - {Data.UserAge}");
+                Console.WriteLine($"Task #{i+1} - {arrayOfTask[i]}\n");
             }
         }
     }
