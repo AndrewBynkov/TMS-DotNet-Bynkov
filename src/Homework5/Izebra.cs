@@ -10,9 +10,10 @@ namespace Homework5
         {
 
         }
-        public void Height()
+        public double Height()
         {
-
+            double heightZebra = default;
+            return heightZebra;
         }
     }
 }

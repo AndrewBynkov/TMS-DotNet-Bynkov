@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Homework5
 {
-    public abstract class Animals
+    public abstract class AbstractAnimals
     {
         public string Brand { get; set; }
 

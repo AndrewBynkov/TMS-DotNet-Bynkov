@@ -6,28 +6,34 @@ using System.Transactions;
 
 namespace Homework5
 {
-    public class Elephand : Animals, Ielephand
+    public class Elephand : AbstractAnimals, Ielephand
     {
-        private string _name = null;
 
         public string GetName()
         {
-            Console.Write("Enter brand animal: ");
+            Console.Write($"Enter name {nameof(Elephand)}: ");
             Brand = Console.ReadLine();
             return Brand;
         }
 
         public string ElephandColor()
         {
-            Console.Write("Enter Color elephapd: ");
+            Console.Write($"Enter color {nameof(Elephand)}: ");
             Color = Console.ReadLine();
             return Color;
         }
 
         public void ElLenght()
         {
-            Console.Write("Enter Lenght elephapd: ");
-            Lenght = Convert.ToDouble(Console.ReadLine());
+            var canParse = false;
+            do
+            {
+                Console.Write($"Enter lenght {nameof(Elephand)}: ");
+                canParse = double.TryParse(Console.ReadLine(), out double val1);
+                Lenght = val1;
+            }
+            while (!canParse);
         }
+
     }
 }
