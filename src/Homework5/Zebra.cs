@@ -45,9 +45,5 @@ namespace Homework5
             }
             while (!canParse);
         }
-
-
-
-
     }
 }
