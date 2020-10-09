@@ -20,7 +20,7 @@ namespace Homework5
             Color = Console.ReadLine();
             return Color;
         }
-        public double Height()
+        public double Height(double heightZebra)
         {
             var canParse = false;
             do
@@ -34,7 +34,7 @@ namespace Homework5
             return HeightZebra;
         }
 
-        public void Weigh()
+        public void WeightZebra()
         {
             var canParse = false;
             do

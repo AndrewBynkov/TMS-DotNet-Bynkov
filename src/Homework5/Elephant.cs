@@ -6,18 +6,18 @@ using System.Transactions;
 
 namespace Homework5
 {
-    public class Elephand : AbstractAnimals, Ielephand
+    public class Elephant : AbstractAnimals, Ielephant
     {
         public string GetName()
         {
-            Console.Write($"Enter name {nameof(Elephand)}: ");
+            Console.Write($"Enter name {nameof(Elephant)}: ");
             Brand = Console.ReadLine();
             return Brand;
         }
 
-        public string ElephandColor()
+        public string ElephandColor(string Elcolor)
         {
-            Console.Write($"Enter color {nameof(Elephand)}: ");
+            Console.Write($"Enter color {nameof(Elephant)}: ");
             Color = Console.ReadLine();
             return Color;
         }
@@ -27,7 +27,7 @@ namespace Homework5
             var canParse = false;
             do
             {
-                Console.Write($"Enter lenght {nameof(Elephand)}: ");
+                Console.Write($"Enter lenght {nameof(Elephant)}: ");
                 canParse = double.TryParse(Console.ReadLine(), out double val1);
                 Lenght = val1;
             }

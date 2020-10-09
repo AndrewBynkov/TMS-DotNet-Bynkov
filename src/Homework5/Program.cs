@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace Homework5
 {
@@ -12,9 +13,9 @@ namespace Homework5
 
         private static void GetInfoAnimalZoo()
         {
-            var elephand = new Elephand();
+            var elephand = new Elephant();
             elephand.GetName();
-            elephand.ElephandColor();
+            elephand.ElephandColor(elephand.Color);
             elephand.ElLenght();
             string[] elephndArray = new string[]
             {
@@ -27,8 +28,8 @@ namespace Homework5
             var zebra = new Zebra();
             zebra.GetNameZebra();
             zebra.ZebraColor();
-            zebra.Height();
-            zebra.Weigh();
+            zebra.Height(zebra.HeightZebra);
+            zebra.WeightZebra();
             string[] zebraArray = new string[]
             {
                 $"Name zebra - {zebra.Brand}" +

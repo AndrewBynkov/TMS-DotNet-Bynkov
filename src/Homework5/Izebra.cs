@@ -6,14 +6,9 @@ namespace Homework5
 {
     public interface Izebra
     {
-        public void Weight()
-        {
+        public void WeightZebra();
 
-        }
-        public double Height()
-        {
-            double heightZebra = default;
-            return heightZebra;
-        }
+        public double Height(double heightZebra);
+
     }
 }
