@@ -8,7 +8,6 @@ namespace Homework5
 {
     public class Elephand : AbstractAnimals, Ielephand
     {
-
         public string GetName()
         {
             Console.Write($"Enter name {nameof(Elephand)}: ");
@@ -34,6 +33,5 @@ namespace Homework5
             }
             while (!canParse);
         }
-
     }
 }
