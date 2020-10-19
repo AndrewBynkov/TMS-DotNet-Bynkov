@@ -22,9 +22,10 @@ namespace Homework6
         USD,
         RUB,
         EUR,
-        BYN
+        BYN,
+        Unknown
     }
-    public abstract class AbstractUserData
+    public abstract class AbstractATM
     {
         /// <summary>
         /// User Language

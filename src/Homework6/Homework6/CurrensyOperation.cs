@@ -1,25 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace Homework6
 {
-    public class CurrensyOperation : AbstractUserData, ICurrensyOperation
+
+    public class CurrensyOperation : AbstractATM, ICurrensyOperation
     {
+        public CurrensyOperation(string name)
+        {
+            _userName = name;
+        }
+
+        private string _userName;
+        public decimal SumOfPutMoney { get; private set; }
+        public decimal SumOfGetMoney { get; private set; }
 
         public string TypeOfUserCurrency()
         {
-            return Carrency;
+            Console.Write("Enter type of currensy: ");
+            Carrency = Console.ReadLine();
+
+            return Carrency switch
+            {
+                "BYN" => EnumCurrency.BYN.ToString(),
+                "USD" => EnumCurrency.USD.ToString(),
+                "EUR" => EnumCurrency.EUR.ToString(),
+                "RUB" => EnumCurrency.RUB.ToString(),
+                "Unknown" => EnumCurrency.Unknown.ToString()
+            };
         }
 
-        public void UserAccauntBallance()
+        public decimal GetMoney()
         {
+            Console.Write("Enter the sum of get money: ");
+            var canParse = false;
 
+            do
+            {
+                canParse = decimal.TryParse(Console.ReadLine(), out decimal val);
+                SumOfGetMoney = val;
+            }
+            while (!canParse);
+
+            return SumOfGetMoney;
         }
 
-        public void CashWithDrawAlamount()
+        public decimal PutMoney()
         {
+            Console.Write("Enter the sum of put money: ");
+            var canParse = false;
 
+            do
+            {
+                canParse = decimal.TryParse(Console.ReadLine(), out decimal val);
+                SumOfPutMoney = val;
+            }
+            while (!canParse);
+
+            return SumOfPutMoney;
+        }
+
+        public void UserAccauntBallanceInfo()
+        {
+            var randBallance = new Random();
+            AccountBallance = randBallance.Next(1, 15000);
+
+            Console.WriteLine($"{_userName} balance before operation: {AccountBallance} {Carrency}");
+            Console.WriteLine($"{_userName} balance after get money: {AccountBallance - SumOfGetMoney} {Carrency}");
+            Console.WriteLine($"{_userName} balcnce after put money: {AccountBallance + SumOfPutMoney} {Carrency}");
         }
     }
 }

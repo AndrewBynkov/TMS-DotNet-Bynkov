@@ -14,11 +14,16 @@ namespace Homework6
         /// <summary>
         /// User accaunt ballance
         /// </summary>
-        public void UserAccauntBallance();
+        public void UserAccauntBallanceInfo();
 
         /// <summary>
-        /// Cash with draw almount
+        /// User get money
         /// </summary>
-        public void CashWithDrawAlamount();
+        public decimal GetMoney();
+
+        /// <summary>
+        /// User put maney
+        /// </summary>
+        public decimal PutMoney();
     }
 }

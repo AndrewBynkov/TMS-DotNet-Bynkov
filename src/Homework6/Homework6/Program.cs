@@ -6,15 +6,21 @@ namespace Homework6
     {
         static void Main(string[] args)
         {
-            GetData();
-        }
+            Console.Write("Please enter user name: ");
+            var userName = Console.ReadLine();
+            var currencyOperation = new CurrensyOperation(userName);
 
-        private static void GetData()
-        {
-            var currencyOperation = new CurrensyOperation();
+            Func <string> getTypeOfCurrency;
+            getTypeOfCurrency = currencyOperation.TypeOfUserCurrency;
 
-            Predicate<string> predicateCurrensyOperation;
-            predicateCurrensyOperation = currencyOperation.TypeOfUserCurrency;
+            Func <decimal> operation;
+            operation = currencyOperation.GetMoney;
+            operation += currencyOperation.PutMoney;
+
+            getTypeOfCurrency();
+            operation();
+            Console.WriteLine();
+            currencyOperation.UserAccauntBallanceInfo();
         }
     }
 }
