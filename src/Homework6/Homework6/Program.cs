@@ -17,10 +17,13 @@ namespace Homework6
             operation = currencyOperation.GetMoney;
             operation += currencyOperation.PutMoney;
 
+            Action GetBallanceInfo;
+            GetBallanceInfo = currencyOperation.UserAccauntBallanceInfo;
+
             getTypeOfCurrency();
             operation();
             Console.WriteLine();
-            currencyOperation.UserAccauntBallanceInfo();
+            GetBallanceInfo();
         }
     }
 }
