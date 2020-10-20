@@ -17,8 +17,8 @@ namespace Homework6
 
         public string TypeOfUserCurrency()
         {
-            Console.Write("Enter type of currensy: ");
-            Carrency = Console.ReadLine();
+            Console.Write("Enter type of currensy - EUR/USD/RUB/BYN: ");
+            Carrency = Console.ReadLine().ToUpper().Replace(" ","");
 
             return Carrency switch
             {

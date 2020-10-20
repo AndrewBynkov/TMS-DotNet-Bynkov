@@ -5,9 +5,9 @@
     /// </summary>
     public enum EnumLanguage
     {
-        English,
-        Russian,
-        Dutch
+        english,
+        russian,
+        dutch
     }
 
     /// <summary>

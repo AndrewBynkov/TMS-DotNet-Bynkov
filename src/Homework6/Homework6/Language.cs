@@ -17,21 +17,21 @@ namespace Homework6
 
             while (!canParse)
             {
-                Console.Write("Select language: ");
+                Console.Write("Select language dutch/english/russian: ");
 
-                switch (_getUserLanguage = Console.ReadLine())
+                switch (_getUserLanguage = Console.ReadLine().ToLower().Replace(" ", ""))
                 {
-                    case nameof(EnumLanguage.Dutch):
+                    case nameof(EnumLanguage.dutch):
                         canParse = true;
                         Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
                         Massage.Invoke();
                         break;
-                    case nameof(EnumLanguage.English):
+                    case nameof(EnumLanguage.english):
                         canParse = true;
                         Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
                         Massage.Invoke();
                         break;
-                    case nameof(EnumLanguage.Russian):
+                    case nameof(EnumLanguage.russian):
                         canParse = true;
                         Thread.CurrentThread.CurrentCulture = new CultureInfo("ru-RU");
                         Massage.Invoke();
