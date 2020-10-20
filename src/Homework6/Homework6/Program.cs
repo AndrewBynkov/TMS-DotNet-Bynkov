@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Homework6
 {
@@ -8,10 +9,14 @@ namespace Homework6
         {
             Console.Write("Please enter user name: ");
             var userName = Console.ReadLine();
+            var userLanguage = new Language();
+            userLanguage.Massage += userLanguage.MassageGoodMorning;
+
             var currencyOperation = new CurrensyOperation(userName);
 
             Func <string> getTypeOfCurrency;
-            getTypeOfCurrency = currencyOperation.TypeOfUserCurrency;
+            getTypeOfCurrency = userLanguage.GetUserLanguage;
+            getTypeOfCurrency += currencyOperation.TypeOfUserCurrency;
 
             Func <decimal> Operation;
             Operation = currencyOperation.GetMoney;

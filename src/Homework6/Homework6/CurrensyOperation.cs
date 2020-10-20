@@ -13,7 +13,9 @@ namespace Homework6
         }
 
         private string _userName;
+
         public decimal SumOfPutMoney { get; private set; }
+
         public decimal SumOfGetMoney { get; private set; }
 
         public string TypeOfUserCurrency()
