@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Homework6
 {
@@ -15,11 +14,11 @@ namespace Homework6
 
             var currencyOperation = new CurrensyOperation(userName);
 
-            Func <string> getTypeOfCurrency;
+            Func<string> getTypeOfCurrency;
             getTypeOfCurrency = userLanguage.GetUserLanguage;
             getTypeOfCurrency += currencyOperation.TypeOfUserCurrency;
 
-            Func <decimal> Operation;
+            Func<decimal> Operation;
             Operation = currencyOperation.GetMoney;
             Operation += currencyOperation.PutMoney;
 

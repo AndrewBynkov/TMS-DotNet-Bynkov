@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Homework6
+﻿namespace Homework6
 {
     /// <summary>
     /// language selection
