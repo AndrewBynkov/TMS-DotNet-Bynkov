@@ -67,7 +67,7 @@ namespace Homework6
 
             Console.WriteLine($"\n{_userName} balance before operation: {AccountBallance} {Carrency}");
             Console.WriteLine($"{_userName} balance after get money: {AccountBallance - SumOfGetMoney} {Carrency}");
-            Console.WriteLine($"{_userName} balcnce after put money: {AccountBallance + SumOfPutMoney} {Carrency}");
+            Console.WriteLine($"{_userName} balcnce after put money: {(AccountBallance - SumOfGetMoney) + SumOfPutMoney} {Carrency}");
         }
     }
 }
