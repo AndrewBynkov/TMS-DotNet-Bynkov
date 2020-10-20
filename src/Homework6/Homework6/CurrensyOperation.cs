@@ -5,7 +5,6 @@ using System.Text;
 
 namespace Homework6
 {
-
     public class CurrensyOperation : AbstractATM, ICurrensyOperation
     {
         public CurrensyOperation(string name)
@@ -28,7 +27,7 @@ namespace Homework6
                 "USD" => EnumCurrency.USD.ToString(),
                 "EUR" => EnumCurrency.EUR.ToString(),
                 "RUB" => EnumCurrency.RUB.ToString(),
-                "Unknown" => EnumCurrency.Unknown.ToString()
+                _ => EnumCurrency.Unknown.ToString(),
             };
         }
 
@@ -67,7 +66,7 @@ namespace Homework6
             var randBallance = new Random();
             AccountBallance = randBallance.Next(1, 15000);
 
-            Console.WriteLine($"{_userName} balance before operation: {AccountBallance} {Carrency}");
+            Console.WriteLine($"\n{_userName} balance before operation: {AccountBallance} {Carrency}");
             Console.WriteLine($"{_userName} balance after get money: {AccountBallance - SumOfGetMoney} {Carrency}");
             Console.WriteLine($"{_userName} balcnce after put money: {AccountBallance + SumOfPutMoney} {Carrency}");
         }

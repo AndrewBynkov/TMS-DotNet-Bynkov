@@ -13,17 +13,16 @@ namespace Homework6
             Func <string> getTypeOfCurrency;
             getTypeOfCurrency = currencyOperation.TypeOfUserCurrency;
 
-            Func <decimal> operation;
-            operation = currencyOperation.GetMoney;
-            operation += currencyOperation.PutMoney;
+            Func <decimal> Operation;
+            Operation = currencyOperation.GetMoney;
+            Operation += currencyOperation.PutMoney;
 
             Action GetBallanceInfo;
             GetBallanceInfo = currencyOperation.UserAccauntBallanceInfo;
 
-            getTypeOfCurrency();
-            operation();
-            Console.WriteLine();
-            GetBallanceInfo();
+            getTypeOfCurrency?.Invoke();
+            Operation?.Invoke();
+            GetBallanceInfo?.Invoke();
         }
     }
 }
