@@ -9,6 +9,7 @@ namespace Homework6
         {
             Console.Write("Please enter user name: ");
             var userName = Console.ReadLine();
+
             var userLanguage = new Language();
             userLanguage.Massage += userLanguage.MassageGoodMorning;
 

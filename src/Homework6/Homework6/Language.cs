@@ -39,6 +39,7 @@ namespace Homework6
                         break;
                 }
             }
+            Console.WriteLine();
             return _getUserLanguage;
         }
 
@@ -46,7 +47,7 @@ namespace Homework6
         {
             if (DateTime.Now.Hour < 12.00)
             {
-                Console.WriteLine("Good morning!");
+                Console.WriteLine($"Good morning!");
             }
             else
             {
