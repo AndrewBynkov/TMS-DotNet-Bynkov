@@ -10,6 +10,10 @@ namespace Homework7
         public static Action ConversionAggrigation;
         public static Action Element;
         public static Action Generation;
+        public static Action Grouping;
+        public static Action Other;
+        public static Action Partitionong;
+        public static Action Restriction;
 
         static void Main(string[] args)
         {
@@ -17,6 +21,98 @@ namespace Homework7
             ConversionAggrigation();
             Element();
             Generation();
+            Grouping();
+            Other();
+            Partitionong();
+            Restriction();
+        }
+
+        static void Sample_Where_Lambda_Objects()
+        {
+            //выбираем элементы соответствующие нашим условиям
+            Person[] persons =
+            {
+                new Person { Name = "Mike", Age = 25 },
+                new Person { Name = "Joe", Age = 43 },
+                new Person { Name = "Nadia", Age = 31 }
+            };
+
+            var result = persons.Where(p => p.Age <= 30);
+
+            Console.WriteLine("Finding persons who are 30 years old or older:");
+            foreach (Person person in result)
+                Console.WriteLine(String.Format("{0}: {1} years old", person.Name, person.Age));
+        }
+
+        static void Sample_SkipWhile_Lambda()
+        {
+            //скипает элементы указанной длинны.
+            string[] words = {"a", "one", "two", "three", "four", "five", "six" };
+
+            var result = words.SkipWhile(w => w.Length == 3 || w.Length <= 1);
+
+            Console.WriteLine("Skips words while the condition is met:");
+            foreach (string word in result)
+                Console.WriteLine(word);
+            Console.WriteLine();
+        }
+
+        static void Sample_SequenceEqual_Lambda()
+        {
+            //Слияние коллекций, если коллекции одинаковые то true если нет то false
+            string[] words = { "one", "two", "three" };
+            string[] wordsSame = { "one", "two", "three" };
+            string[] wordsOrder = { "two", "three", "one" };
+            string[] wordsCase = { "one", "TWO", "three" };
+
+            var resultSame = words.SequenceEqual(wordsSame);
+            var resultOrder = words.SequenceEqual(wordsOrder);
+            var resultCase = words.SequenceEqual(wordsCase);
+            var resultCaseIgnored = words.SequenceEqual(wordsCase, StringComparer.OrdinalIgnoreCase);
+
+            Console.WriteLine("SequenceEqual on two identical arrays:");
+            Console.WriteLine(resultSame);
+
+            Console.WriteLine("SequenceEqual on two differently ordered but otherwise identical arrays:");
+            Console.WriteLine(resultOrder);
+
+            Console.WriteLine("SequenceEqual on two differently cased but otherwise identical arrays:");
+            Console.WriteLine(resultCase);
+
+            Console.WriteLine("SequenceEqual on two differently cased but otherwise identical arrays, where case is ignored:");
+            Console.WriteLine(resultCaseIgnored);
+            Console.WriteLine();
+        }
+
+        static void Sample_GroupBy_Lambda()
+        {
+            //поочередно берем каждый элемент и смотрим на остаток от деления на 10. Key это true or false 
+            int[] numbers = { 10, 15, 20, 25, 30, 35 };
+
+            var result = numbers.GroupBy(n => (n % 10 == 0));
+
+            Console.WriteLine("GroupBy has created two groups:");
+            foreach (IGrouping<bool, int> group in result)
+            {
+                if (group.Key == true)
+                    Console.WriteLine("Divisible by 10");
+                else
+                    Console.WriteLine("Not Divisible by 10");
+
+                foreach (int number in group)
+                    Console.WriteLine(number);
+            }
+            Console.WriteLine();
+        }
+
+        static void Sample_Empty_Lambda()
+        {
+            //количество элементов в коллекции
+            var empty = Enumerable.Empty<string>();
+            // To make sequence into an array use empty.ToArray()
+
+            Console.Write("Sequence is empty: ");
+            Console.WriteLine(empty.Count() == 0);
         }
 
         private static void Sample_DefaultIfEmpty_Lambda_DefaultValue()
@@ -241,6 +337,11 @@ namespace Homework7
             Element += Sample_SingleOrDefault_Lambda;
             Generation = Sample_DefaultIfEmpty_Lambda_Simple;
             Generation += Sample_DefaultIfEmpty_Lambda_DefaultValue;
+            Generation += Sample_Empty_Lambda;
+            Grouping += Sample_GroupBy_Lambda;
+            Other = Sample_SequenceEqual_Lambda;
+            Partitionong = Sample_SkipWhile_Lambda;
+            Restriction = Sample_Where_Lambda_Objects;
         }
         #endregion
     }
