@@ -15,7 +15,7 @@ namespace Homework6
             var currencyOperation = new CurrensyOperation(userName);
 
             Func<string> getTypeOfCurrency;
-            getTypeOfCurrency =  userLanguage.GetUserLanguage;
+            getTypeOfCurrency = userLanguage.GetUserLanguage;
             getTypeOfCurrency += currencyOperation.TypeOfUserCurrency;
 
             Func<decimal> Operation;
