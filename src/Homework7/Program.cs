@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
+using System.Transactions;
 
 namespace Homework7
 {
@@ -14,6 +16,7 @@ namespace Homework7
         public static Action Other;
         public static Action Partitionong;
         public static Action Restriction;
+        public static Action Quantifiers;
 
         static void Main(string[] args)
         {
@@ -25,9 +28,48 @@ namespace Homework7
             Other();
             Partitionong();
             Restriction();
+            Quantifiers();
         }
 
+        /// <summary>
+        /// My variant
+        /// </summary>
+        private static void Sample_All_Lambda()
+        #region
+        {
+            string[] names = { "Andrew@mail.ru", "Ann@gmail.ru", "Kristina", "Bill" };
+
+            var result = names.Any(boolValue => boolValue.Contains("@"));
+
+            Console.Write("Have char - '@': ");
+            Console.WriteLine(result);
+        }
+        #endregion
+
+        /// <summary>
+        /// My variant aggregate
+        /// </summary>
+        private static void StringAggregate()
+        #region
+        {
+            string[] arrayString = new string[] { "John", "Andrew", "Bob", "Jameson" };
+
+            var result = arrayString.Aggregate((current, next) =>
+            {
+                if (next == "Bob")
+                {
+                    next =  next.Replace(next, "Abraham");
+                }
+                return current + " "+ next;
+            });
+
+            Console.WriteLine(result);
+            Console.WriteLine();
+        }
+        #endregion
+
         static void Sample_Where_Lambda_Objects()
+        #region
         {
             //выбираем элементы соответствующие нашим условиям
             Person[] persons =
@@ -42,7 +84,9 @@ namespace Homework7
             Console.WriteLine("Finding persons who are 30 years old or older:");
             foreach (Person person in result)
                 Console.WriteLine(String.Format("{0}: {1} years old", person.Name, person.Age));
+            Console.WriteLine();
         }
+        #endregion
 
         static void Sample_SkipWhile_Lambda()
         {
@@ -86,7 +130,7 @@ namespace Homework7
 
         static void Sample_GroupBy_Lambda()
         {
-            //поочередно берем каждый элемент и смотрим на остаток от деления на 10. Key это true or false 
+            //поочередно берем каждый элемент и смотрим на остаток от деления на 10. Key это true or false
             int[] numbers = { 10, 15, 20, 25, 30, 35 };
 
             var result = numbers.GroupBy(n => (n % 10 == 0));
@@ -283,6 +327,7 @@ namespace Homework7
         }
 
         private static void Sample_AsEnumerable_Lambda()
+        #region
         {
             //Переводит Коллекция в Enumerable типа коллекции (того же)
             string[] names = { "John", "Suzy", "Dave" };
@@ -294,8 +339,10 @@ namespace Homework7
                 Console.WriteLine(name);
             Console.WriteLine();
         }
+        #endregion
 
         private static void LinqAgregateSeed()
+        #region
         {
             //Прибавление к заданному числу элементов коллекции, массива по очереди
             var numbers = new int[] { 1, 2, 3 };
@@ -307,8 +354,10 @@ namespace Homework7
             Console.WriteLine(result);
             Console.WriteLine();
         }
+        #endregion
 
         private static void LinqAgregateSimple()
+        #region
         {
             //Умножене a*=b
             var numbers = new int[] { 2, 2, 4 };
@@ -320,6 +369,7 @@ namespace Homework7
             Console.WriteLine(result);
             Console.WriteLine();
         }
+        #endregion
 
         private static void AddToDelegate()
         #region
@@ -342,6 +392,8 @@ namespace Homework7
             Other = Sample_SequenceEqual_Lambda;
             Partitionong = Sample_SkipWhile_Lambda;
             Restriction = Sample_Where_Lambda_Objects;
+            Restriction = StringAggregate;
+            Quantifiers = Sample_All_Lambda;
         }
         #endregion
     }
