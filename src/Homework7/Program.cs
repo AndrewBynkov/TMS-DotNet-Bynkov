@@ -89,8 +89,9 @@ namespace Homework7
         #endregion
 
         static void Sample_SkipWhile_Lambda()
+        #region
         {
-            //скипает элементы указанной длинны.
+            //скипает элементы указанной длинны, но еслт позже попадется элемент такой же длинны то больше не скипнет.
             string[] words = {"a", "one", "two", "three", "four", "five", "six" };
 
             var result = words.SkipWhile(w => w.Length == 3 || w.Length <= 1);
@@ -100,8 +101,10 @@ namespace Homework7
                 Console.WriteLine(word);
             Console.WriteLine();
         }
+        #endregion
 
         static void Sample_SequenceEqual_Lambda()
+        #region
         {
             //Слияние коллекций, если коллекции одинаковые то true если нет то false
             string[] words = { "one", "two", "three" };
@@ -127,8 +130,10 @@ namespace Homework7
             Console.WriteLine(resultCaseIgnored);
             Console.WriteLine();
         }
+        #endregion
 
         static void Sample_GroupBy_Lambda()
+        #region
         {
             //поочередно берем каждый элемент и смотрим на остаток от деления на 10. Key это true or false
             int[] numbers = { 10, 15, 20, 25, 30, 35 };
@@ -148,8 +153,10 @@ namespace Homework7
             }
             Console.WriteLine();
         }
+        #endregion
 
         static void Sample_Empty_Lambda()
+        #region
         {
             //количество элементов в коллекции
             var empty = Enumerable.Empty<string>();
@@ -158,8 +165,10 @@ namespace Homework7
             Console.Write("Sequence is empty: ");
             Console.WriteLine(empty.Count() == 0);
         }
+        #endregion
 
         private static void Sample_DefaultIfEmpty_Lambda_DefaultValue()
+        #region
         {
             //Если коллекция пуста, возвращается ее значение по умолчанию. Выставляем значение по умолчанию 5.
             int[] empty = { };
@@ -170,8 +179,10 @@ namespace Homework7
             Console.WriteLine(result.Count() == 1 && result.First() == 5);
             Console.WriteLine();
         }
+        #endregion
 
         private static void Sample_DefaultIfEmpty_Lambda_Simple()
+        #region
         {
             //проверяем коллекции
             string[] emptyStr = { };
@@ -194,8 +205,10 @@ namespace Homework7
             Console.WriteLine(resultWords.SequenceEqual(words));
             Console.WriteLine();
         }
+        #endregion
 
         private static void Sample_SingleOrDefault_Lambda()
+        #region
         {
             //Проверка на единственный элемент. Если больше - null, если меньше - тоже null, если один, то выводится элемент.
             string[] names1 = { "Peter" };
@@ -223,8 +236,10 @@ namespace Homework7
             }
             Console.WriteLine();
         }
+        #endregion
 
         private static void Sample_ElementAtOrDefault_Lambda()
+        #region
         {
             string[] colors = { "Red", "Green", "Blue" };
 
@@ -239,8 +254,10 @@ namespace Homework7
             Console.WriteLine(resultIndex10 == null);
             Console.WriteLine();
         }
+        #endregion
 
         private static void Sample_ElementAt_Lambda()
+        #region
         {
             // достаем элемент из коллекции по индексу
             string[] words = { "One", "Two", "Three" };
@@ -251,8 +268,10 @@ namespace Homework7
             Console.WriteLine(result);
             Console.WriteLine();
         }
+        #endregion
 
         private static void Sample_ToLookup_Lambda()
+        #region
         {
             //в этом случае сортировка по длинне строк. В цикле for выставляем длинну строки и проверяем строки из массива w = "one".Lenght = 3, и т.д.
             string[] words = { "one", "two", "three", "four", "five", "six", "seven" };
@@ -269,8 +288,10 @@ namespace Homework7
             }
             Console.WriteLine();
         }
+        #endregion
 
         private static void Sample_ToDictionary_Lambda_Conditional()
+        #region
         {
             int[] numbers = { 1, 2, 3, 4 };
 
@@ -281,8 +302,10 @@ namespace Homework7
                 Console.WriteLine("Value {0} is {1}", dic.Key, dic.Value);
             Console.WriteLine();
         }
+        #endregion
 
         private static void Sample_ToDictionary_Lambda_Simple()
+        #region
         {
             //Создали экземпляр english2German, инициализировали, создали словарь где (k - key, v - value)
             English2German[] english2German =
@@ -299,8 +322,10 @@ namespace Homework7
                 Console.WriteLine(String.Format("English salute {0} is {1} in German", dic.Key, dic.Value));
             Console.WriteLine();
         }
+        #endregion
 
         private static void Sample_OfType_Lambda()
+        #region
         {
             //Фильтр элементов коллекции (ищет элементы заданного типа)
             object[] objects = { "Thomas", 31, 5.02, null, "Joey" };
@@ -312,8 +337,10 @@ namespace Homework7
                 Console.WriteLine(str);
             Console.WriteLine();
         }
+        #endregion
 
         private static void Sample_Cast_Lambda()
+        #region
         {
             //Приводит коллекцию к указанному типу. В этом случае "string"
             List<string> vegetables = new List<string> { "Cucumber", "Tomato", "Broccoli" };
@@ -325,6 +352,7 @@ namespace Homework7
                 Console.WriteLine(vegetable);
             Console.WriteLine();
         }
+        #endregion
 
         private static void Sample_AsEnumerable_Lambda()
         #region
