@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Homework8
 {
@@ -6,19 +7,17 @@ namespace Homework8
     {
         public static event Func<double> DelegateRun;
 
-        public static event Func<double> DelegateWalking;
-
         static void Main(string[] args)
         {
-            userChooese();
+            userСhoice();
         }
 
-        public static void userChooese()
+        public static void userСhoice()
         {
-            var walkingMode = new FitnessMode(DateTime.Now);
+            var walkingMode = new FitnessModeWalking(DateTime.Now);
             var runMode = new RunMode();
 
-            Console.WriteLine("Pease enter mode (Run/Walking): ");
+            Console.Write("Pease enter mode (Run/Walking): ");
             string userInput = Console.ReadLine();
 
             if (userInput == "Run")
@@ -27,7 +26,7 @@ namespace Homework8
             }
             if (userInput == "Walking")
             {
-                DelegateWalking += walkingMode.Walking;
+                walkingMode.GetInfoWalking();
             }
         }
     }

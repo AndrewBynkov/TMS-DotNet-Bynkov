@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Homework8
 {
-    public abstract class FitnessIndicators
+    public abstract class AbcstractFitnessIndicators
     {
         public readonly DateTime _timeNow = DateTime.Now;
 
