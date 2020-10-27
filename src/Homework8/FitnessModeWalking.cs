@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Homework8
 {
-    class FitnessModeWalking : AbcstractFitnessIndicators, IFitnessModeWalking
+    class FitnessModeWalking : AbcstractFitnessIndicators
     {
         public event Action Notify;
         public Func<double> SpeedAndDistance;
@@ -32,11 +31,7 @@ namespace Homework8
             return AverageSpeed;
         }
 
-        private double UserDistanseWalking()
-        {
-            DistanseWalking = AverageSpeed * _timeWalking;
-            return DistanseWalking;
-        }
+        private double UserDistanseWalking() => DistanseWalking = AverageSpeed * _timeWalking;
 
         private int UserPulseWalking()
         {
@@ -47,40 +42,45 @@ namespace Homework8
 
         private int UserSteps()
         {
-            double[] stepsLenght = new double[] { 0.07, 0.09 };
-            Steps = (int)(DistanseWalking / stepsLenght.Average());
-            return Steps;
+            double[] stepsLenght = new double[] { 0.7, 0.9 };
+            var countSteps = DistanseWalking / stepsLenght.Average();
+            return Steps = (int)countSteps;
         }
+
         public void AddToDeligate()
         {
             SpeedAndDistance = UserAverageSpeed;
             SpeedAndDistance += UserDistanseWalking;
             PulseAndSteps = UserPulseWalking;
             PulseAndSteps += UserSteps;
-            PulseAndSteps();
             SpeedAndDistance();
+            PulseAndSteps();
         }
 
         public void GetInfoWalking()
         {
             AddToDeligate();
+            Notify += Massage;
+
+            Console.WriteLine("Time run - 5 min");
             Console.WriteLine($"You speed: {AverageSpeed} km/h");
-            Console.WriteLine($"You pulse: {Pulse} bp/m");
-            Console.WriteLine($"You distanse: {DistanseWalking} km");
+            Console.Write($"You pulse: {Pulse} bp/m, ");
+            Notify?.Invoke();
+            Console.WriteLine($"You distanse: {DistanseWalking / 100} km");
             Console.WriteLine($"Count you steps: {Steps}");
+            Console.WriteLine($"Date now: {DateTime.Now}");
         }
 
         public void Massage()
         {
-            if (Pulse >70)
+            if (Pulse > 70)
             {
-                Console.Write("Fast heart rate > 60! ");
+                Console.WriteLine("Fast heart rate > 60! ");
             }
             else
             {
-                Console.Write("You are at ease");
+                Console.WriteLine("Pulse normal.");
             }
-            
         }
     }
 }

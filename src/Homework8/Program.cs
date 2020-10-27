@@ -5,28 +5,36 @@ namespace Homework8
 {
     class Program
     {
-        public static event Func<double> DelegateRun;
+        public static Action RunInfo;
+        public static Action WalkingInfo;
 
         static void Main(string[] args)
         {
-            userСhoice();
+            UserСhoice();
         }
 
-        public static void userСhoice()
+        public static void UserСhoice()
         {
             var walkingMode = new FitnessModeWalking(DateTime.Now);
-            var runMode = new RunMode();
+            var runMode = new FitnessModeRun(DateTime.Now);
 
-            Console.Write("Pease enter mode (Run/Walking): ");
-            string userInput = Console.ReadLine();
+            WalkingInfo = walkingMode.GetInfoWalking;
 
-            if (userInput == "Run")
+            string userInputNameMode = null;
+
+            while (userInputNameMode!= "Run" || userInputNameMode!= "Walking")
             {
-                DelegateRun += runMode.Run;
+                Console.Write("Pease enter mode (Run/Walking): ");
+                userInputNameMode = Console.ReadLine();
             }
-            if (userInput == "Walking")
+
+            if (userInputNameMode == "Run")
             {
-                walkingMode.GetInfoWalking();
+
+            }
+            if (userInputNameMode == "Walking")
+            {
+                WalkingInfo();
             }
         }
     }
