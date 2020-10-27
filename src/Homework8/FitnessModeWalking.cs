@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Homework8
 {
     public class FitnessModeWalking : AbcstractFitnessIndicators
     {
-        public event Action Notify;
         public Func<double> SpeedAndDistance;
         public Func<int> PulseAndSteps;
+        public event Action Notify;
 
         public FitnessModeWalking(int timeWalking)
         {
@@ -35,7 +36,7 @@ namespace Homework8
 
         private int UserPulseWalking()
         {
-            int[] heartRate = new int[] { 60, 100 };
+            List<int> heartRate = new List<int> { 60, 100 };
             Pulse = (int)heartRate.Average();
             return Pulse;
         }
