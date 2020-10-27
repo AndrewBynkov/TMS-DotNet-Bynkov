@@ -5,9 +5,9 @@ namespace Homework8
 {
     public class FitnessModeRun : AbcstractFitnessIndicators, IFitnessMode
     {
-        public FitnessModeRun(DateTime timeNow)
+        public FitnessModeRun(int timeRun)
         {
-            _timeRun = (timeNow.Minute + 5) - timeNow.Minute;
+            _timeRun = timeRun;
         }
 
         /// <summary>

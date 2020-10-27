@@ -15,18 +15,31 @@ namespace Homework8
 
         public static void UserСhoice()
         {
-            var walkingMode = new FitnessModeWalking(DateTime.Now);
-            var runMode = new FitnessModeRun(DateTime.Now);
+            Console.Write("Enter walking time: ");
+            var timeWalking = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter run time: ");
+            var timeRun = Convert.ToInt32(Console.ReadLine());
+
+            var walkingMode = new FitnessModeWalking(timeWalking);
+            var runMode = new FitnessModeRun(timeRun);
 
             WalkingInfo = walkingMode.GetInfoWalking;
 
-            string userInputNameMode = null;
+            string userInputNameMode;
+            bool canParse = false;
 
-            while (userInputNameMode!= "Run" || userInputNameMode!= "Walking")
+            do
             {
-                Console.Write("Pease enter mode (Run/Walking): ");
+                Console.Write("Enter name mode: Run/Walking: ");
                 userInputNameMode = Console.ReadLine();
+
+                if (userInputNameMode.Contains("Run") || userInputNameMode.Contains("Walking"))
+                {
+                    canParse = true;
+                }
             }
+            while (!canParse);
 
             if (userInputNameMode == "Run")
             {

@@ -3,21 +3,21 @@ using System.Linq;
 
 namespace Homework8
 {
-    class FitnessModeWalking : AbcstractFitnessIndicators
+    public class FitnessModeWalking : AbcstractFitnessIndicators
     {
         public event Action Notify;
         public Func<double> SpeedAndDistance;
         public Func<int> PulseAndSteps;
 
-        public FitnessModeWalking(DateTime timeNow)
+        public FitnessModeWalking(int timeWalking)
         {
-            _timeWalking = (timeNow.Minute + 5) - timeNow.Minute;
+            _timeWalking = timeWalking;
         }
 
         /// <summary>
         /// TimeUserWalking
         /// </summary>
-        private double _timeWalking;
+        private int _timeWalking;
 
         /// <summary>
         /// DistanseUserWalking
@@ -62,13 +62,14 @@ namespace Homework8
             AddToDeligate();
             Notify += Massage;
 
-            Console.WriteLine("Time run - 5 min");
-            Console.WriteLine($"You speed: {AverageSpeed} km/h");
+            Console.WriteLine($"\nTime walking: {_timeWalking} min");
+            Console.WriteLine($"You average speed: {AverageSpeed} km/h");
             Console.Write($"You pulse: {Pulse} bp/m, ");
             Notify?.Invoke();
-            Console.WriteLine($"You distanse: {DistanseWalking / 100} km");
+            Console.WriteLine($"You distanse: {DistanseWalking / 1000} km");
             Console.WriteLine($"Count you steps: {Steps}");
-            Console.WriteLine($"Date now: {DateTime.Now}");
+            Console.WriteLine($"Time of start walking: {DateTime.Now - new DateTime().AddMinutes(_timeWalking).TimeOfDay}");
+            Console.WriteLine($"Time of end walking: {DateTime.Now}");
         }
 
         public void Massage()
