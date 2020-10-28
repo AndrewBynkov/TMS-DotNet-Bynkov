@@ -29,6 +29,26 @@ namespace Homework7
             Partitionong();
             Restriction();
             Quantifiers();
+
+            IEnumerable<int> arr = new int[] { 1, 3, 4, 5, 5 };
+            arr.ToList();
+            Console.WriteLine(arr.GetType());
+            Console.WriteLine(arr.Count());
+            Console.WriteLine(arr.Last());
+            Console.WriteLine(arr.First());
+            Console.WriteLine($"Last or def - {arr.LastOrDefault()}");
+            Console.WriteLine($"Single or def {arr.SingleOrDefault()}");
+            Console.WriteLine($"DefEmpty - {arr.DefaultIfEmpty()}");
+            var result44 = Enumerable.Repeat("Andrew", 5 );
+            var result55 = Enumerable.Range(1, 101);
+
+        }
+
+        private static void ToList()
+        {
+            IEnumerable<int> arr = new int[] { 1, 3, 4, 5};
+            arr.ToList();
+            Console.WriteLine(arr.GetType());
         }
 
         /// <summary>
