@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Homework8
+﻿namespace Homework8
 {
     public interface IFitnessMode
     {
@@ -35,6 +31,5 @@ namespace Homework8
         /// Get info mode
         /// </summary>
         public void GetInfo();
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 
 namespace Homework8
 {
@@ -25,7 +24,6 @@ namespace Homework8
                 fitnessTime = val1;
             }
             while (!canParse);
-
 
             var walkingMode = new FitnessModeWalking(fitnessTime);
             var runMode = new FitnessModeRun(fitnessTime);
