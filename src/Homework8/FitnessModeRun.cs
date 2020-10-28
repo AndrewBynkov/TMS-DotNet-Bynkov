@@ -15,16 +15,16 @@ namespace Homework8
         /// </summary>
         private double _timeRun;
 
-        public double UserDistanseWalking()
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// Distanse Run
+        /// </summary>
+        public double DistanseRun { get; set; }
 
-        public double UserAverageSpeed()
-        {
-            throw new System.NotImplementedException();
-        }
-        public int UserPulseWalking()
+        public double UserDistanse() => DistanseRun = AverageSpeed * _timeRun;
+
+        public double UserAverageSpeed() => AverageSpeed = DistanseRun / _timeRun;
+
+        public int UserPulse()
         {
             throw new System.NotImplementedException();
         }
@@ -34,9 +34,10 @@ namespace Homework8
             throw new System.NotImplementedException();
         }
 
-        public void GetInfoWalking()
+
+        public void GetInfo()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

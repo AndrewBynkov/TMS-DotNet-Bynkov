@@ -25,6 +25,7 @@ namespace Homework8
             var runMode = new FitnessModeRun(timeRun);
 
             WalkingInfo = walkingMode.GetInfoWalking;
+            RunInfo = runMode.GetInfo;
 
             string userInputNameMode;
             bool canParse = false;
@@ -43,7 +44,7 @@ namespace Homework8
 
             if (userInputNameMode == "Run")
             {
-
+                RunInfo(
             }
             if (userInputNameMode == "Walking")
             {
