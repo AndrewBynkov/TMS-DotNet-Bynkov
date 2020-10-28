@@ -15,20 +15,25 @@ namespace Homework8
 
         public static void UserСhoice()
         {
-            Console.Write("Enter walking time: ");
-            var timeWalking = Convert.ToInt32(Console.ReadLine());
+            int fitnessTime;
+            bool canParse = false;
 
-            Console.Write("Enter run time: ");
-            var timeRun = Convert.ToInt32(Console.ReadLine());
+            do
+            {
+                Console.Write("Enter fitness time: ");
+                canParse = int.TryParse(Console.ReadLine(), out int val1);
+                fitnessTime = val1;
+            }
+            while (!canParse);
 
-            var walkingMode = new FitnessModeWalking(timeWalking);
-            var runMode = new FitnessModeRun(timeRun);
+
+            var walkingMode = new FitnessModeWalking(fitnessTime);
+            var runMode = new FitnessModeRun(fitnessTime);
 
             WalkingInfo = walkingMode.GetInfoWalking;
             RunInfo = runMode.GetInfo;
 
             string userInputNameMode;
-            bool canParse = false;
 
             do
             {
@@ -44,7 +49,7 @@ namespace Homework8
 
             if (userInputNameMode == "Run")
             {
-                RunInfo(
+                RunInfo();
             }
             if (userInputNameMode == "Walking")
             {
