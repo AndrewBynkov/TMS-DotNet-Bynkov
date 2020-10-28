@@ -2,7 +2,6 @@
 {
     public interface IFitnessMode
     {
-
         /// <summary>
         /// Average Speed
         /// </summary>
