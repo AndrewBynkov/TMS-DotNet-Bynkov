@@ -65,7 +65,7 @@ namespace Homework8
             var countSteps = DistanseWalking / stepsLenght.Average();
             return Steps = (int)countSteps;
         }
-        
+
         private void AddToDeligate()
         {
             SpeedAndDistance = UserAverageSpeed;
@@ -76,7 +76,7 @@ namespace Homework8
             SpeedAndDistance();
             PulseAndSteps();
         }
-        
+
         public void GetInfoWalking()
         {
             AddToDeligate();
