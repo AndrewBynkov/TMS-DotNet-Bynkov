@@ -70,7 +70,6 @@ namespace Homework8
             StepsPulse();
         }
 
-
         public void GetInfo()
         {
             AddToDeligate();
